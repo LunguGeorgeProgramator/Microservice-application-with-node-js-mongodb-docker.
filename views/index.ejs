@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Test</title>
+    <title>Quizzes home page.</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <script src="js/jquery-1.6.2.min.js"></script>
+    <script src="js/custom.js"></script>
   </head>
   <body>
     <div class="container">
@@ -15,20 +16,44 @@
             <p class="card-text">
                 A quiz is a form of game or mind sport, in which the players (as individuals or in teams) attempt to answer questions correctly. It is a game to test your knowledge about a certain subject. In some countries, a quiz is also a brief assessment used in education and similar fields to measure growth in knowledge, abilities, and/or skills.
             </p>
-            <a href="#!" class="btn btn-lg btn-primary card-link float-right">Add quiz</a>
+            <p id="submit" class="cursor-pointer btn btn-lg btn-primary card-link float-right">Add quiz</p>
         </div>
       </div>
       <div class="list-group">
           <% quizzes.forEach(quizz => { %>
-            <button type="button" class="list-group-item list-group-item-action"><%= `Name: ${quizz.name}, Age: ${quizz.description}` %></button>
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= `${quizz.name}` %></h5>
+                  <small class="text-muted">
+                    <a title="Show details" href="/show?id=<%= `${quizz._id}` %>" class="btn btn-outline-primary card-link float-right">View</a>
+                    <a title="Remove entry" href="/remove?id=<%= `${quizz._id}` %>" class="btn btn-outline-primary mr-1 card-link float-right">Del</a>
+                  </small>
+              </div>
+              <p class="mb-1"><%= `${quizz.description}` %></p>
+            </div>
           <% }); %>
         </div>
-      <fieldset>
+        <div id="customForm" class="form card">
+          <div class="card-body">
+            <div class="form-group">
+              <label >Quizz name</label>
+              <input class="form-control" id="quizzName" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+              <label >Quizz description</label>
+              <textarea class="form-control" id="quizzDescription" placeholder="Enter description" required></textarea>
+            </div>
+            <div  class="cursor-pointer btn btn-outline-primary mr-1 card-link float-left mb-2">Add</div>
+            <div id="closeForm" class="cursor-pointer btn btn-outline-primary card-link float-right mb-2">close</div>
+          </div>
+        </div>
+      <!-- <fieldset>
         <form action="/" method="post">
-          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
-          <input type="submit" class="ghost-button" value="Get Weather">
+          <input name="name" type="text" class="ghost-input" placeholder="Enter a quizz name" required>
+          <input name="description" type="text" class="ghost-input" placeholder="Enter a quizz name" required>
+          <input type="submit" class="ghost-button" value="add quizz">
         </form>
-      </fieldset>
+      </fieldset> -->
     </div>
   </body>
 </html>
