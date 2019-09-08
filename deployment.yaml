@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-microservices-node-app
+  labels:
+    app: test-microservices-node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-microservices-node-app
+  template:
+    metadata:
+      labels:
+        app: test-microservices-node-app
+    spec:
+      containers:
+      - name: test-microservices-node-app
+        image: test-microservices-node-app
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000

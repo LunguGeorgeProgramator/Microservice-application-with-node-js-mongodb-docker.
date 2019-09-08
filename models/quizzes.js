@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 mongoose.connect('mongodb://mongo:27017/test_db')
+//mongoose.connect('mongodb://localhost:27017/test_db')
     .then(() => console.log('Now connected to MongoDB!'))
     .catch(err => console.error('Something went wrong', err));
 

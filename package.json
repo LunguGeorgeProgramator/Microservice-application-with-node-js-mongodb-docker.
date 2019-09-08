@@ -1,20 +1,20 @@
 {
-  "name": "test-microservices-node-app",
-  "version": "1.0.0",
-  "description": "colect data from all the microservices",
-  "main": "server.js",
-  "scripts": {
-    "test": "Test message.",
-    "start": "nodemon server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
-    "express": "^4.17.1",
-    "mongoose": "^5.2.7",
-    "nodemon": "^1.19.2"
-  },
-  "devDependencies": {}
-}
+    "name": "test-microservices-node-app",
+    "version": "1.0.0",
+    "description": "colect data from all the microservices",
+    "main": "server.js",
+    "scripts": {
+      "test": "Test message.",
+      "start": "nodemon server.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.18.3",
+      "ejs": "^2.6.1",
+      "express": "^4.17.1",
+      "mongoose": "^5.2.7",
+      "nodemon": "^1.19.2"
+    },
+    "devDependencies": {}
+  }

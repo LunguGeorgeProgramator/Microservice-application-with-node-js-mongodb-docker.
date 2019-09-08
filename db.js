@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const DataBaseName = 'test_db'; 
 var listCollecttions = ['quizzes']; // set default collection to create
-// const DataBaseHost = 'mongodb://localhost:27017/'; 
+//const DataBaseHost = 'mongodb://localhost:27017/'; 
 const DataBaseHost = 'mongodb://mongo:27017/';
 
 class dbController {
