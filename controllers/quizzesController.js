@@ -26,7 +26,7 @@ const QuizzesController = {
         return res;
     },
     "show": function (res, req) {
-        QuizzModel.findOne({_id: req.query.id}, function(err, quizz) { 
+        QuizzModel.findOne({_id: req.params.id}, function(err, quizz) { 
             res.render('show', { 'quizz': quizz });
         });
         return res;

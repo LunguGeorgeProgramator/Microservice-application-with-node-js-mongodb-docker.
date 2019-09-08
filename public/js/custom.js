@@ -8,12 +8,45 @@ $(function(){
         return element;
     }
 
+    function closePopUp(){
+        $("#customForm").css("display","none");
+    }
+
     $('#submit').click(function() {
         center($("#customForm"));
     });
 
     $('#closeForm').click(function() {
-        $("#customForm").css("display","none");
+        closePopUp();
     });
 
+    $('#addForm').click(function() {
+        var name = $("#quizzName").val();
+        var description = $("#quizzDescription").val();        
+        if(!$.trim(name).length){
+            alert("Quizz name is required!!!");
+        }else if(!$.trim(description).length){
+            alert("Quizz description is required!!!");
+        }else{
+            var dataObject = {};
+            dataObject.name = name;
+            dataObject.description = description;
+            $.ajax({
+                type: "POST",
+                url: "/",
+                timeout: 2000,
+                data: dataObject,
+                success: function(data) {
+                    //show content
+                    closePopUp();
+                    window.location.href = "/";
+                    // console.log('Success!')
+                },
+                error: function(jqXHR, textStatus, err) {
+                    //show error message
+                    console.log('text status '+textStatus+', err '+err)
+                }
+            });
+        }
+    });
 });

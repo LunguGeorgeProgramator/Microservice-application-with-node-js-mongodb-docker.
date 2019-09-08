@@ -14,7 +14,7 @@ function views(app){
         return QuizzesController.remove(res, req);
     })
 
-    app.get('/show', function (req, res) { 
+    app.get('/show/:id', function (req, res) { 
         return QuizzesController.show(res, req);
     })
 
