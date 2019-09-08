@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card mb-4 mt-4">
+        <div class="card-body">
+            <h5 class="card-title">List Quizzes.</h5>
+            <p class="card-text">
+                A quiz is a form of game or mind sport, in which the players (as individuals or in teams) attempt to answer questions correctly. It is a game to test your knowledge about a certain subject. In some countries, a quiz is also a brief assessment used in education and similar fields to measure growth in knowledge, abilities, and/or skills.
+            </p>
+            <a href="#!" class="btn btn-lg btn-primary card-link float-right">Add quiz</a>
+        </div>
+      </div>
+      <div class="list-group">
+          <% quizzes.forEach(quizz => { %>
+            <button type="button" class="list-group-item list-group-item-action"><%= `Name: ${quizz.name}, Age: ${quizz.description}` %></button>
+          <% }); %>
+        </div>
+      <fieldset>
+        <form action="/" method="post">
+          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+          <input type="submit" class="ghost-button" value="Get Weather">
+        </form>
+      </fieldset>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+Steps to create a microservice:
+
+1. create a project folder.
+2. create a microservice folder inside and a file server.js with default content:
+	
+3. open windows power shell as admin set path to microservice folder:
+	PS C:\Users\George> cd C:\Users\George\Desktop\test-microservices-node-app
+	PS C:\Users\George\Desktop\test-microservices-node-app> cd microservice-interface
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> npm init
+4. install nod js library express
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> npm install --save express
+5. add start comand to script package.json if is not there:
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js"
+	  },
+	5.1 Test if it works with comand npm run start
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> npm run start
+	5.2 run in browser link:
+		http://localhost:3000/
+		display a "Hello world" message
+	5.3 Crt+c to exit:
+		My test app!!!!!!!!
+		Terminate batch job (Y/N)? y
+		
+6. set it to docker create file with name Dockerfile, and content:
+	FROM node:9-slim
+	WORKDIR /server
+	COPY package.json /server
+	RUN npm install
+	COPY . /server
+	CMD ["npm", "start"]
+7. create docker image with comand:
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface>docker build -t microservice-interface .
+8. mapp the docker container port 3000 to windows server port 9000 also can pe run interactive -it or in back ground -d, -p means port:
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface>docker run -it -p 9000:3000 microservice-interface
+	8.1 test link browser:
+	http://localhost:9000/
+9. to see docker images running comend:
+	docker ps
+	9.1 the result it will be like this:
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> docker ps
+	CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS                    NAMES
+	1eb47aa5a472        microservice-interface   "npm start"         11 seconds ago      Up 8 seconds        0.0.0.0:9000->3000/tcp   recursing_faraday	
+10. to close one image comand:
+		PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface>docker stop 1eb47aa5a472
+		or 
+		PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface>docker stop 1e 
+11. install nodemon is not found, comand:
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> npm install -g nodemon
+12. set nodemon in pakage.json
+     "scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon server.js"
+	  },
+13. comand in terminal:
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> npm run start
+14. add node to pakage package.json
+	14.1 if some reason it dose not let you instal force clear cache first:
+		PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> npm cache clean --force
+		windows sucks ..... victory to ubuntu
+	14.2 add node to pakage package.json comand
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> npm install --save nodemon
+15. rebuild docker image:
+	PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> docker build -t microservice-interface .
+16. set value path:
+	 docker run -it -p 9001:3000 -v ${pwd}:/server microservice-interface
+17. if not working on edit just stop and run docker run -it -p 9001:3000 or start run and after docker build
+
+
+
+install html npm pakage ejs
+
+1. install comand:
+npm install ejs --save
+
+2. create folder views and file index.ejs
+
+
+mongod --dbpath C:\Users\George\Desktop\test-microservices-node-app\microservice-interface\data
+
+start mongodb server
+
+open a terminal enter comands:
+1> cd C:\Program Files\MongoDB\Server\4.2\bin
+2> mongod --dbpath C:\Users\George\Desktop\test-microservices-node-app\microservice-interface\data
+
+open second terminal
+1> cd C:\Program Files\MongoDB\Server\4.2\bin
+2> to get all databases comand
+	show dbs
+3> create a new db
+	use quizzes
+	use test_db
+4> create colection/table
+	db.quizzes.insert({"name": "Cars quizz.", "description": "General quizz about cars."})
+	
+	db.quizzes.insert({"name": "Food quizz.", "description": "General quizz about food."})
+	db.quizzes.insert({"name": "Sport quizz.", "description": "General quizz about sports."})
+5>
+	show 
+	show collections;
+	
+pull docker mongo db
+comand:
+PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> docker pull mongo
+
+docker images
+
+specific version
+PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> docker pull mongo:4.0
+to run the mongo image comand:
+PS C:\Users\George\Desktop\test-microservices-node-app\microservice-interface> docker run mongo:4.0
+run in back ground 
+docker run -d -p 27017:27017 mongo:4.0
+
+docker run -d -p 27017-27019:27017-27019 --name mongodb mongo:4.0
+
+docker exec -it mongodb bash
+
+
+
+docker run -d -p 27017:27017 mongo
+
+remove all 
+
+docker system prune
+docker image prune -a
+docker volume prune
+docker network prune
+
+docker-compose up
+
+uita tot: -- modifica scripts si stop:
+crt+c
+docker-compose up -d --force-recreate --build
+
+docker-compose up
+
+ ----
+docker push image to docker hub
+
+C:\Users\George\Desktop\test-microservices-node-app>docker images
+REPOSITORY                        TAG                 IMAGE ID            CREATED             SIZE
+test-microservices-node-app_app   latest              c1ed2fe40156        20 minutes ago      926MB
+node                              10                  f7949667ac49        3 weeks ago         904MB
+mongo                             latest              cdc6740b66a7        3 weeks ago         361MB
+
+C:\Users\George\Desktop\test-microservices-node-app>docker ps -a
+CONTAINER ID        IMAGE                             COMMAND                  CREATED             STATUS                     PORTS               NAMES
+de9194044574        test-microservices-node-app_app   "docker-entrypoint.s…"   20 minutes ago      Exited (0) 2 minutes ago                       test-microservices-node-app
+dba7b54dbf59        mongo                             "docker-entrypoint.s…"   20 minutes ago      Exited (0) 2 minutes ago                       mongo
+
+C:\Users\George\Desktop\test-microservices-node-app>docker commit de9194044574 lungugeorge111/test-microservices-node-app:2
+sha256:d90439f36910c86da35ac9763188f18faadfeb534ca60027b42dc2eba7c81388
+
+C:\Users\George\Desktop\test-microservices-node-app>docker images
+REPOSITORY                                   TAG                 IMAGE ID            CREATED             SIZE
+lungugeorge111/test-microservices-node-app   2                   d90439f36910        6 seconds ago       926MB
+test-microservices-node-app_app              latest              c1ed2fe40156        21 minutes ago      926MB
+node                                         10                  f7949667ac49        3 weeks ago         904MB
+mongo                                        latest              cdc6740b66a7        3 weeks ago         361MB
+
+C:\Users\George\Desktop\test-microservices-node-app>docker push lungugeorge111/test-microservices-node-app:2
+The push refers to repository [docker.io/lungugeorge111/test-microservices-node-app]
+dbae412dedc3: Pushed
+2aa01cb2fdcb: Pushed
+c9bb42b00004: Pushed
+8e05f86389b3: Pushed
+9777ea8be4cb: Pushed
+3327226ca5a6: Mounted from library/node
+4e0d43a23e92: Mounted from library/node
+fabd12e56457: Mounted from library/node
+f9abf83226f9: Mounted from library/node
+a29e77239a9c: Mounted from library/node
+e7c6a88ad7ae: Mounted from library/node
+057abc6c6937: Mounted from library/node
+d09a13f05627: Mounted from library/node
+f73e7e79899a: Mounted from library/node
+2: digest: sha256:0b8936e5192be897e35704f8f589cba48697834e31927b6ddf03ba069535827d size: 3256
+
+C:\Users\George\Desktop\test-microservices-node-app>

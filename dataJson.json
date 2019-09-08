@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Quizz cars.",
+        "description": "Questions about cars."
+    },
+    {
+        "id": 2,
+        "name": "Quizz food.",
+        "description": "Questions about food."
+    },
+    {
+        "id": 3,
+        "name": "Quizz sports.",
+        "description": "Questions about sports."
+    }
+]
