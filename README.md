@@ -1,5 +1,7 @@
 # test-microservices-node-app
- 
+
+This project is a start of quizz online aplication.
+
 In order to set this project up and running please instal docker.
 
 https://www.docker.com/
